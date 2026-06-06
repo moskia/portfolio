@@ -1,9 +1,11 @@
 import { profile } from "@/data/profile";
 import { experience, education } from "@/data/experience";
+import { projects, type Project } from "@/data/projects";
 import PageContainer from "@/components/layout/PageContainer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ExperienceCard from "@/components/ui/ExperienceCard";
 import Tag from "@/components/ui/Tag";
+import LinkButton from "@/components/ui/LinkButton";
 
 export default function ResumePage() {
   return (
@@ -11,10 +13,17 @@ export default function ResumePage() {
       <SectionHeader
         label="~/resume"
         title="Resume"
-        subtitle="Experience, education, and skills."
+        subtitle="Experience, education, projects, and skills."
+        action={
+          // Points to /public/resume.pdf — replace that file with your real PDF.
+          <LinkButton href="/resume.pdf" download variant="ghost">
+            ↓ Download PDF
+          </LinkButton>
+        }
       />
 
-      <div className="space-y-12">
+      <div className="space-y-14">
+
         <ResumeSection title="Experience">
           {experience.map((entry) => (
             <ExperienceCard key={entry.role} {...entry} />
@@ -27,6 +36,12 @@ export default function ResumePage() {
           ))}
         </ResumeSection>
 
+        <ResumeSection title="Projects">
+          {projects.map((project) => (
+            <ProjectRow key={project.id} project={project} />
+          ))}
+        </ResumeSection>
+
         <ResumeSection title="Skills">
           <div className="flex flex-wrap gap-2">
             {profile.skills.map((skill) => (
@@ -34,10 +49,13 @@ export default function ResumePage() {
             ))}
           </div>
         </ResumeSection>
+
       </div>
     </PageContainer>
   );
 }
+
+// ── Local helpers ─────────────────────────────────────────────────────────────
 
 function ResumeSection({
   title,
@@ -51,9 +69,48 @@ function ResumeSection({
       <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-neutral-500">
         {title}
       </h2>
-      {/* Accent line under the section title */}
       <div className="mb-5 h-px w-8 bg-accent" />
       <div className="border-l border-border pl-6">{children}</div>
+    </div>
+  );
+}
+
+// Compact project row for the resume — shows name, one-liner, stack, and links.
+// Much shorter than the full ProjectCard case study used on /projects.
+function ProjectRow({ project }: { project: Project }) {
+  return (
+    <div className="mb-5 last:mb-0">
+      <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <span className="font-semibold text-neutral-100">{project.title}</span>
+        <div className="flex gap-4 text-xs">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-500 underline underline-offset-2 transition-colors hover:text-neutral-200"
+            >
+              GitHub
+            </a>
+          )}
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-500 underline underline-offset-2 transition-colors hover:text-neutral-200"
+            >
+              Live
+            </a>
+          )}
+        </div>
+      </div>
+      <p className="mb-2 text-sm text-neutral-400">{project.description}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {project.stack.map((tech) => (
+          <Tag key={tech} label={tech} />
+        ))}
+      </div>
     </div>
   );
 }

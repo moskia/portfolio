@@ -1,5 +1,6 @@
 // A link that looks like a button — for navigation, not click actions.
-// Use `external` for links that open in a new tab (GitHub, live demo, etc.).
+// `external` — opens in a new tab (GitHub, live demo, etc.)
+// `download` — triggers a file download instead of navigation
 import Link from "next/link";
 
 type LinkButtonVariant = "primary" | "ghost";
@@ -8,6 +9,7 @@ type LinkButtonProps = {
   href: string;
   variant?: LinkButtonVariant;
   external?: boolean;
+  download?: boolean;
   children: React.ReactNode;
 };
 
@@ -20,12 +22,22 @@ export default function LinkButton({
   href,
   variant = "ghost",
   external = false,
+  download = false,
   children,
 }: LinkButtonProps) {
   const className = `inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium transition-colors ${variantStyles[variant]}`;
 
-  // External links use a plain <a> so the browser opens them in a new tab.
-  // Internal links use Next.js <Link> for client-side navigation and prefetching.
+  // `download` renders a plain <a download> — the browser saves the file
+  // instead of navigating to it. Works for same-origin files in /public.
+  if (download) {
+    return (
+      <a href={href} download className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  // External links open in a new tab.
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
@@ -34,6 +46,7 @@ export default function LinkButton({
     );
   }
 
+  // Internal links use Next.js <Link> for client-side navigation and prefetching.
   return (
     <Link href={href} className={className}>
       {children}

@@ -12,7 +12,7 @@ export default function ProjectsPage() {
         subtitle="A selection of things I've built."
       />
 
-      <ul className="space-y-6">
+      <ul className="space-y-8">
         {projects.map((project) => (
           <li key={project.id}>
             <ProjectCard project={project} />
