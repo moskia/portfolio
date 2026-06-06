@@ -1,31 +1,33 @@
-import Link from "next/link";
 import { profile } from "@/data/profile";
+import PageContainer from "@/components/layout/PageContainer";
+import LinkButton from "@/components/ui/LinkButton";
 
 export default function HomePage() {
   return (
-    <section className="mx-auto flex max-w-4xl flex-col items-start justify-center px-6 py-32">
-      <p className="mb-2 text-sm font-medium uppercase tracking-widest text-neutral-400">
-        Welcome
-      </p>
-      <h1 className="mb-4 text-5xl font-bold tracking-tight text-neutral-900">
-        Hi, I&apos;m {profile.name}.
-      </h1>
-      <p className="mb-8 max-w-xl text-lg text-neutral-600">{profile.bio}</p>
+    <PageContainer>
+      <div className="py-16">
+        {/* Monospace eyebrow — sets the technical tone immediately */}
+        <p className="font-mono font-medium mb-3 text-sm text-accent">
+          {profile.title.toLowerCase()} · {profile.location.toLowerCase()}
+        </p>
 
-      <div className="flex gap-4">
-        <Link
-          href="/projects"
-          className="rounded-md bg-neutral-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
-        >
-          See my work
-        </Link>
-        <Link
-          href="/about"
-          className="rounded-md border border-neutral-300 px-5 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:border-neutral-900"
-        >
-          About me
-        </Link>
+        <h1 className="mb-6 text-5xl font-bold tracking-tight text-neutral-100">
+          Hi, I&apos;m {profile.name}.
+        </h1>
+
+        <p className="mb-10 max-w-lg text-neutral-400 leading-relaxed">
+          {profile.bio}
+        </p>
+
+        <div className="flex flex-wrap gap-3">
+          <LinkButton href="/projects" variant="primary">
+            See my work
+          </LinkButton>
+          <LinkButton href="/about" variant="ghost">
+            About me
+          </LinkButton>
+        </div>
       </div>
-    </section>
+    </PageContainer>
   );
 }

@@ -9,4 +9,15 @@ export const profile = {
     github: "https://github.com/moskia",
     linkedin: "https://www.linkedin.com/in/mohamed-amine-benkia-a9a026379/",
   },
+  // Add or remove skills here — they appear on the About and Resume pages.
+  skills: [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "PostgreSQL",
+    "Git",
+    "Tailwind CSS",
+    "REST APIs",
+  ],
 };

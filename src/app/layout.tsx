@@ -15,12 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "My personal portfolio and creative space.",
+  title: "Amine BENKIA — Portfolio",
+  description: "Full-Stack Developer based in Paris.",
 };
 
-// The root layout wraps every page in the app.
-// Navbar and Footer appear on all routes automatically.
 export default function RootLayout({
   children,
 }: {
@@ -28,9 +26,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="flex min-h-screen flex-col bg-white text-neutral-900 antialiased">
+      <body className="flex min-h-screen flex-col bg-neutral-950 text-neutral-100 antialiased">
         <Navbar />
-        {/* main grows to fill remaining height, pushing Footer to the bottom */}
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
