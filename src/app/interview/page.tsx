@@ -1,6 +1,7 @@
 import PageContainer from "@/components/layout/PageContainer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Card from "@/components/ui/Card";
+import ScrambleText from "@/components/ui/ScrambleText";
 
 export default function InterviewPage() {
   return (
@@ -15,8 +16,12 @@ export default function InterviewPage() {
         {qanda.map(({ question, answer }) => (
           <li key={question}>
             <Card>
-              <p className="font-mono mb-3 text-xs text-accent">Q: {question}</p>
-              <p className="text-sm text-neutral-400 leading-relaxed">{answer}</p>
+              <p className="font-mono mb-3 text-xs text-accent">
+                Q: <ScrambleText text={question} />
+              </p>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                <ScrambleText text={answer} />
+              </p>
             </Card>
           </li>
         ))}

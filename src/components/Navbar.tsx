@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { profile } from "@/data/profile";
+import ScrambleText from "@/components/ui/ScrambleText";
 
 const navLinks = [
   { href: "/about",     label: "About" },
@@ -13,10 +14,11 @@ export default function Navbar() {
     <header className="border-b border-border bg-neutral-950">
       <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
 
-        {/* Brand — "~/" prefix gives a terminal/home-directory feeling */}
         <Link href="/" className="flex items-baseline gap-0.5 font-semibold tracking-tight">
           <span className="font-mono text-accent">~/</span>
-          <span className="text-neutral-100">{profile.name}</span>
+          <span className="text-neutral-100">
+            <ScrambleText text={profile.name} />
+          </span>
         </Link>
 
         <ul className="flex gap-6">
@@ -26,7 +28,7 @@ export default function Navbar() {
                 href={link.href}
                 className="text-sm text-neutral-400 transition-colors hover:text-neutral-100"
               >
-                {link.label}
+                <ScrambleText text={link.label} />
               </Link>
             </li>
           ))}

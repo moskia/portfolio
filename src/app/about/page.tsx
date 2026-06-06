@@ -2,6 +2,7 @@ import { profile } from "@/data/profile";
 import PageContainer from "@/components/layout/PageContainer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Tag from "@/components/ui/Tag";
+import ScrambleText from "@/components/ui/ScrambleText";
 
 export default function AboutPage() {
   return (
@@ -13,14 +14,15 @@ export default function AboutPage() {
       />
 
       <div className="space-y-4 text-neutral-400 leading-relaxed">
-        <p>{profile.bio}</p>
+        <p><ScrambleText text={profile.bio} /></p>
         <p>
-          Based in {profile.location}. You can reach me at{" "}
+          <ScrambleText text="Based in" />{" "}<ScrambleText text={profile.location} />{". "}
+          <ScrambleText text="You can reach me at" />{" "}
           <a
             href={`mailto:${profile.email}`}
             className="text-neutral-200 underline underline-offset-2 transition-colors hover:text-accent"
           >
-            {profile.email}
+            <ScrambleText text={profile.email} />
           </a>
           .
         </p>
@@ -28,7 +30,7 @@ export default function AboutPage() {
 
       <div className="mt-12">
         <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-neutral-500">
-          Skills
+          <ScrambleText text="Skills" />
         </h2>
         <div className="flex flex-wrap gap-2">
           {profile.skills.map((skill) => (
