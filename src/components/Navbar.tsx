@@ -1,8 +1,8 @@
 import { type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import Link from "next/link";
-import ScrambleText from "@/components/ui/ScrambleText";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import ScrambleText from "@/components/ui/ScrambleText";
 
 type NavbarProps = {
   locale: Locale;
@@ -24,10 +24,10 @@ export default function Navbar({ locale }: NavbarProps) {
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-5">
         <Link href={`/${locale}`} className="leading-none shrink-0">
           <span className="block text-lg font-bold tracking-tight text-ink">
-            <ScrambleText text={first} onScroll={false} />
+            <ScrambleText text={first} delay={0} />
           </span>
           <span className="block text-lg font-light tracking-tight text-ink-muted">
-            <ScrambleText text={rest.join(" ")} onScroll={false} delay={120} />
+            <ScrambleText text={rest.join(" ")} delay={60} />
           </span>
         </Link>
 
@@ -39,7 +39,7 @@ export default function Navbar({ locale }: NavbarProps) {
                   href={link.href}
                   className="text-[15px] text-ink-muted transition-colors hover:text-ink"
                 >
-                  <ScrambleText text={link.label} />
+                  {link.label}
                 </Link>
               </li>
             ))}

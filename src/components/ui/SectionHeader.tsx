@@ -13,16 +13,14 @@ export default function SectionHeader({ title, subtitle, label, action }: Sectio
       <div>
         {label && (
           <p className="mb-4 text-xs font-semibold tracking-[0.15em] text-ink-light uppercase">
-            <ScrambleText text={label} />
+            <ScrambleText text={label} delay={0} />
           </p>
         )}
         <h1 className="text-4xl font-bold tracking-tight text-ink md:text-5xl">
-          <ScrambleText text={title} />
+          <ScrambleText text={title} delay={80} />
         </h1>
         {subtitle && (
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
-            <ScrambleText text={subtitle} onHover={false} />
-          </p>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">{subtitle}</p>
         )}
       </div>
       {action && <div className="shrink-0 pt-1">{action}</div>}

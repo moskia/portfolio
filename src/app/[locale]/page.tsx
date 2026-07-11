@@ -45,30 +45,28 @@ export default async function HomePage({ params }: PageProps) {
           </p>
 
           <h1 className="max-w-3xl text-5xl font-bold leading-[1.1] tracking-tight text-ink md:text-7xl">
-            <ScrambleText text={t.profile.name} delay={150} />
+            <ScrambleText text={t.profile.name} delay={120} />
           </h1>
 
           <p className="mt-8 max-w-2xl text-xl leading-relaxed text-ink-muted md:text-2xl">
-            <ScrambleText text={t.profile.headline} onHover={false} delay={300} />
+            <ScrambleText text={t.profile.headline} delay={280} />
           </p>
 
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-light md:text-lg">
-            <ScrambleText text={t.home.proofPoint} onHover={false} delay={375} />
+            {t.home.proofPoint}
           </p>
 
-          <p className="mt-4 text-sm text-ink-light">
-            <ScrambleText text={t.home.locationLine} onHover={false} delay={450} />
-          </p>
+          <p className="mt-4 text-sm text-ink-light">{t.home.locationLine}</p>
 
           <div className="mt-12 flex flex-wrap gap-4">
             <LinkButton href={`/${locale}/projects`} variant="primary">
-              <ScrambleText text={t.home.viewProjects} />
+              {t.home.viewProjects}
             </LinkButton>
             <LinkButton href={t.resumePdf} download variant="ghost">
-              <ScrambleText text={t.home.downloadResume} />
+              {t.home.downloadResume}
             </LinkButton>
             <LinkButton href={`mailto:${t.profile.email}`} variant="ghost">
-              <ScrambleText text={t.home.contactMe} />
+              {t.home.contactMe}
             </LinkButton>
           </div>
         </PageContainer>
@@ -77,7 +75,7 @@ export default async function HomePage({ params }: PageProps) {
       <section className="bg-bg-subtle">
         <PageContainer>
           <p className="mb-8 text-xs font-semibold tracking-[0.15em] text-accent uppercase">
-            <ScrambleText text={t.home.inDepth} />
+            <ScrambleText text={t.home.inDepth} trigger="scroll" />
           </p>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -88,10 +86,10 @@ export default async function HomePage({ params }: PageProps) {
                 className="group rounded-2xl border border-border bg-bg p-8 shadow-sm transition-shadow hover:shadow-md"
               >
                 <p className="mb-3 text-xs font-semibold tracking-[0.12em] text-ink-light uppercase">
-                  <ScrambleText text={t.home.project} onHover={false} />
+                  {t.home.project}
                 </p>
                 <h2 className="text-2xl font-bold text-ink group-hover:text-accent transition-colors">
-                  <ScrambleText text={project.title} />
+                  <ScrambleText text={project.title} trigger="scroll" />
                 </h2>
                 <p className="mt-4 leading-relaxed text-ink-muted">{project.description}</p>
               </Link>
@@ -103,7 +101,7 @@ export default async function HomePage({ params }: PageProps) {
       <section>
         <PageContainer>
           <p className="mb-6 text-xs font-semibold tracking-[0.15em] text-ink-light uppercase">
-            <ScrambleText text={t.home.focusedOn} onHover={false} />
+            {t.home.focusedOn}
           </p>
           <div className="flex flex-wrap gap-3">
             {t.profile.focus.map((item) => (

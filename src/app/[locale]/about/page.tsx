@@ -48,42 +48,42 @@ export default async function AboutPage({ params }: PageProps) {
       <div className="max-w-2xl space-y-6 text-lg leading-relaxed text-ink-muted">
         <p>{t.profile.bio}</p>
         <p>
-          <ScrambleText text={t.about.basedIn} onHover={false} />{" "}
-          <ScrambleText text={t.profile.location} onHover={false} />
+          {t.about.basedIn}{" "}
+          {t.profile.location}
           {". "}
-          <ScrambleText text={t.about.reachMe} onHover={false} />{" "}
+          {t.about.reachMe}{" "}
           <a
             href={`mailto:${t.profile.email}`}
             className="text-accent underline underline-offset-4 transition-colors hover:text-accent-hover"
           >
-            <ScrambleText text={t.profile.email} />
+            {t.profile.email}
           </a>
           .
         </p>
         <p>
-          <ScrambleText text={t.about.writeOn} onHover={false} />{" "}
+          {t.about.writeOn}{" "}
           <a
             href={links.medium}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent underline underline-offset-4 transition-colors hover:text-accent-hover"
           >
-            <ScrambleText text="Medium" />
+            Medium
           </a>{" "}
-          <ScrambleText text={t.about.writeOnSuffix} onHover={false} />
+          {t.about.writeOnSuffix}
         </p>
       </div>
 
       <div className="mt-16">
         <h2 className="mb-6 text-xs font-semibold tracking-[0.15em] text-ink-light uppercase">
-          <ScrambleText text={t.about.skills} />
+          <ScrambleText text={t.about.skills} trigger="scroll" />
         </h2>
         <SkillsGrid categories={skillCategories} />
       </div>
 
       <div className="mt-16">
         <h2 className="mb-6 text-xs font-semibold tracking-[0.15em] text-ink-light uppercase">
-          <ScrambleText text={t.about.languages} />
+          <ScrambleText text={t.about.languages} trigger="scroll" />
         </h2>
         <ul className="space-y-3 text-ink-muted">
           {t.profile.spokenLanguages.map(({ name, level }) => (

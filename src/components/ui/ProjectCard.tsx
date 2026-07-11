@@ -22,11 +22,9 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
     <Card className="transition-shadow hover:shadow-md">
 
       <h2 className="mb-2 text-2xl font-bold text-ink">
-        <ScrambleText text={project.title} />
+        <ScrambleText text={project.title} trigger="scroll" />
       </h2>
-      <p className="mb-8 text-ink-muted">
-        <ScrambleText text={project.description} onHover={false} />
-      </p>
+      <p className="mb-8 text-ink-muted">{project.description}</p>
 
       <div className="mb-8 space-y-6 border-t border-border pt-8">
         <CaseStudyRow label={labels.problem}  text={project.problem}  />
@@ -43,7 +41,7 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
       <div className="flex flex-wrap gap-3">
         {project.github && (
           <LinkButton href={project.github} external>
-            <ScrambleText text={labels.github} />
+            {labels.github}
           </LinkButton>
         )}
         {project.privateNote && (
@@ -53,7 +51,7 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
         )}
         {project.url && (
           <LinkButton href={project.url} external>
-            <ScrambleText text={labels.liveDemo} />
+            {labels.liveDemo}
           </LinkButton>
         )}
       </div>
@@ -66,7 +64,7 @@ function CaseStudyRow({ label, text }: { label: string; text: string }) {
   return (
     <div>
       <p className="mb-2 text-xs font-semibold tracking-[0.12em] text-ink-light uppercase">
-        <ScrambleText text={label} />
+        <ScrambleText text={label} trigger="scroll" />
       </p>
       <p className="leading-relaxed text-ink-muted">{text}</p>
     </div>

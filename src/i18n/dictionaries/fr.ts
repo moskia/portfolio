@@ -38,7 +38,7 @@ export const fr: Dictionary = {
   home: {
     tagline:        "Ingénieur logiciel",
     proofPoint:
-      "Récemment : réduction de 50% de l'usage CPU sur un pipeline de production utilisé par des comptes comme Airbus et Thales, durant mon stage chez Padoa.",
+      "Récemment : développement full-stack sur une plateforme SaaS en production — livraison de fonctionnalités et optimisation des performances, en stage.",
     locationLine:   "Paris · ENSEEIHT · Padoa",
     viewProjects:   "Voir mes projets",
     downloadResume: "Télécharger mon CV",
@@ -93,7 +93,7 @@ export const fr: Dictionary = {
     headline:
       "Jeune ingénieur logiciel — je construis des systèmes full-stack en production et des outils de développement augmentés par l'IA.",
     bio:
-      "Diplômé de l'ENSEEIHT, en stage de fin d'études chez Padoa. Je développe des fonctionnalités en production — TypeScript, Java, Node.js, Angular, PostgreSQL, Elasticsearch — et je cherche mon premier CDI. Ce qui m'intéresse : concevoir des solutions solides, optimiser les performances, et intégrer l'IA au quotidien des développeurs (revue de code, CI, assistants locaux).",
+      "Diplômé de l'ENSEEIHT, en stage de fin d'études chez Padoa sur une plateforme SaaS en production. Je m'intéresse au développement de bout en bout et à la construction de logiciels fiables, utilisés en conditions réelles. Je recherche mon premier CDI.",
     location: "Paris, France",
     email:    "mabenkia612@gmail.com",
     focus: ["Revue de code IA", "Automatisation CI", "Full-stack"],

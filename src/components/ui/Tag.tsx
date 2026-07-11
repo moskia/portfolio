@@ -1,5 +1,3 @@
-import ScrambleText from "./ScrambleText";
-
 type TagProps = {
   label: string;
 };
@@ -7,7 +5,7 @@ type TagProps = {
 export default function Tag({ label }: TagProps) {
   return (
     <span className="rounded-full border border-border bg-bg-subtle px-3 py-1 text-xs font-medium text-ink-muted">
-      <ScrambleText text={label} />
+      {label}
     </span>
   );
 }

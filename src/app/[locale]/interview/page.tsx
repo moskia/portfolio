@@ -47,7 +47,7 @@ export default async function InterviewPage({ params }: PageProps) {
           <li key={question}>
             <Card>
               <p className="font-mono mb-3 text-xs text-accent">
-                Q: <ScrambleText text={question} />
+                Q: <ScrambleText text={question} trigger="scroll" />
               </p>
               <p className="text-sm text-ink-muted leading-relaxed">{answer}</p>
             </Card>

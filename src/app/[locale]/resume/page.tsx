@@ -49,10 +49,10 @@ export default async function ResumePage({ params }: PageProps) {
         action={
           <div className="flex flex-wrap gap-2">
             <LinkButton href="/resume-en.pdf" download variant="ghost">
-              <ScrambleText text={t.resume.downloadEn} />
+              {t.resume.downloadEn}
             </LinkButton>
             <LinkButton href="/resume-fr.pdf" download variant="ghost">
-              <ScrambleText text={t.resume.downloadFr} />
+              {t.resume.downloadFr}
             </LinkButton>
           </div>
         }
@@ -89,7 +89,7 @@ function ResumeSection({ title, children }: { title: string; children: React.Rea
   return (
     <div>
       <h2 className="mb-1 text-xs font-semibold uppercase tracking-widest text-ink-muted">
-        <ScrambleText text={title} />
+        <ScrambleText text={title} trigger="scroll" />
       </h2>
       <div className="mb-5 h-px w-8 bg-accent" />
       <div className="border-l border-border pl-6">{children}</div>
@@ -102,7 +102,7 @@ function ProjectRow({ project, liveLabel }: { project: Project; liveLabel: strin
     <div className="mb-5 last:mb-0">
       <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <span className="font-medium text-ink">
-          <ScrambleText text={project.title} />
+          <ScrambleText text={project.title} trigger="scroll" />
         </span>
         <div className="flex gap-4 text-xs">
           {project.github && (
@@ -112,7 +112,7 @@ function ProjectRow({ project, liveLabel }: { project: Project; liveLabel: strin
               rel="noopener noreferrer"
               className="text-ink-muted underline underline-offset-2 transition-colors hover:text-ink"
             >
-              <ScrambleText text="GitHub" />
+              GitHub
             </a>
           )}
           {project.url && (
@@ -122,7 +122,7 @@ function ProjectRow({ project, liveLabel }: { project: Project; liveLabel: strin
               rel="noopener noreferrer"
               className="text-ink-muted underline underline-offset-2 transition-colors hover:text-ink"
             >
-              <ScrambleText text={liveLabel} />
+              {liveLabel}
             </a>
           )}
         </div>

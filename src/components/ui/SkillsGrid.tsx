@@ -1,3 +1,4 @@
+import Tag from "./Tag";
 import ScrambleText from "./ScrambleText";
 
 export type SkillCategory = {
@@ -19,25 +20,18 @@ export default function SkillsGrid({ categories }: SkillsGridProps) {
           className="rounded-2xl border border-border bg-bg p-6 shadow-sm"
         >
           <h3 className="mb-1 text-sm font-semibold tracking-wide text-ink">
-            <ScrambleText text={category.name} onHover={false} />
+            <ScrambleText text={category.name} trigger="scroll" />
           </h3>
 
           {category.description && (
-            <p className="mb-4 text-xs leading-relaxed text-ink-muted">
-              {category.description}
-            </p>
+            <p className="mb-4 text-xs leading-relaxed text-ink-muted">{category.description}</p>
           )}
 
-          <ul className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             {category.skills.map((skill) => (
-              <li
-                key={skill}
-                className="rounded-full border border-border bg-bg-subtle px-3 py-1 text-xs font-medium text-ink-muted"
-              >
-                {skill}
-              </li>
+              <Tag key={skill} label={skill} />
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>

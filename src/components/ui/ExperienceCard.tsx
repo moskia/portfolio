@@ -13,15 +13,11 @@ export default function ExperienceCard({ role, company, period, description }: E
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div>
           <span className="font-semibold text-ink">
-            <ScrambleText text={role} />
+            <ScrambleText text={role} trigger="scroll" />
           </span>
-          <span className="ml-2 text-ink-muted">
-            — <ScrambleText text={company} />
-          </span>
+          <span className="ml-2 text-ink-muted">— {company}</span>
         </div>
-        <span className="text-sm text-ink-light">
-          <ScrambleText text={period} />
-        </span>
+        <span className="text-sm text-ink-light">{period}</span>
       </div>
       <p className="mt-3 leading-relaxed text-ink-muted">{description}</p>
     </div>

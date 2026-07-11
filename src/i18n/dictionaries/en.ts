@@ -43,7 +43,7 @@ export const en: Dictionary = {
   home: {
     tagline:        "Software Engineering",
     proofPoint:
-      "Recently: cut CPU usage by 50% on a production pipeline serving enterprise accounts like Airbus and Thales, during my internship at Padoa.",
+      "Recently: full-stack work on a production SaaS platform — shipping features and improving performance during my current internship.",
     locationLine:   "Paris, France · ENSEEIHT · Padoa",
     viewProjects:   "View projects",
     downloadResume: "Download resume",
@@ -98,7 +98,7 @@ export const en: Dictionary = {
     headline:
       "Software Engineering graduate building full-stack production systems and AI-powered developer tools.",
     bio:
-      "I'm a Software Engineering graduate from ENSEEIHT (INP Toulouse), currently completing my end-of-studies internship at Padoa on a production SaaS platform used by large organizations. I like owning features end-to-end — diagnosing bottlenecks, shipping APIs and frontends, writing tests, and validating in production. I'm especially drawn to embedding AI into the engineering workflow: LLM code review, local RAG assistants, and CI automation.",
+      "I'm a Software Engineering graduate from ENSEEIHT (INP Toulouse), currently completing my end-of-studies internship at Padoa on a production SaaS platform used by large organizations. I enjoy working across the stack — from implementation to production — and building software that holds up with real users and real constraints.",
     location: "Paris, France",
     email:    "mabenkia612@gmail.com",
     focus: ["AI code review", "CI automation", "full-stack engineering"],
