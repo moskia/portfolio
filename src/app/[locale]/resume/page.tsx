@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getSkillCategories } from "@/i18n/skill-categories";
 import { type Project } from "@/data/projects";
+import { buildPageMetadata } from "@/lib/site-metadata";
 import PageContainer from "@/components/layout/PageContainer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ExperienceCard from "@/components/ui/ExperienceCard";
@@ -17,6 +19,18 @@ type PageProps = {
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const t = getDictionary(locale);
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "/resume",
+    title: t.pageMeta.resume.title,
+    description: t.pageMeta.resume.description,
+  });
 }
 
 export default async function ResumePage({ params }: PageProps) {

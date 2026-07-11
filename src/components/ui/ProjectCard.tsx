@@ -46,6 +46,11 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
             <ScrambleText text={labels.github} />
           </LinkButton>
         )}
+        {project.privateNote && (
+          <span className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-sm font-medium text-ink-light">
+            {project.privateNote}
+          </span>
+        )}
         {project.url && (
           <LinkButton href={project.url} external>
             <ScrambleText text={labels.liveDemo} />

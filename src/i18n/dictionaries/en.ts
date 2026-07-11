@@ -7,22 +7,47 @@ const links = {
 };
 
 export const en: Dictionary = {
-  meta: {
-    title: "Amine Benkia — Portfolio",
-    description:
-      "Software Engineering graduate from ENSEEIHT. Full-stack & backend developer building production SaaS systems and AI-powered developer tools.",
+  pageMeta: {
+    home: {
+      title: "Amine Benkia — Software Engineer",
+      description:
+        "Software Engineering graduate building full-stack production SaaS systems and AI-powered developer tools.",
+    },
+    about: {
+      title: "About — Amine Benkia",
+      description:
+        "Software Engineering graduate from ENSEEIHT, based in Paris. Full-stack developer with experience in production SaaS and AI tooling.",
+    },
+    projects: {
+      title: "Projects — Amine Benkia",
+      description:
+        "Selected projects: MILO (local-first AI learning companion), AI Code Reviewer (LLM-powered CI pipeline), and a Spring Boot HR document workflow.",
+    },
+    resume: {
+      title: "Resume — Amine Benkia",
+      description:
+        "Experience, education, projects, and skills — internships at Padoa, CMI France, and Business Action Network.",
+    },
+    qanda: {
+      title: "Q&A — Amine Benkia",
+      description:
+        "Questions I've been asked about my work, learning style, and what I'm looking for next.",
+    },
   },
   nav: {
     about:     "About",
     projects:  "Projects",
     resume:    "Resume",
-    interview: "Interview",
+    qanda:     "Q&A",
   },
   home: {
     tagline:        "Software Engineering",
+    proofPoint:
+      "Recently: cut CPU usage by 50% on a production pipeline serving enterprise accounts like Airbus and Thales, during my internship at Padoa.",
     locationLine:   "Paris, France · ENSEEIHT · Padoa",
     viewProjects:   "View projects",
     downloadResume: "Download resume",
+    contactMe:      "Contact me",
     inDepth:        "In depth",
     project:        "Project",
     focusedOn:      "Currently focused on",
@@ -55,9 +80,9 @@ export const en: Dictionary = {
     downloadFr: "↓ FR",
     live:       "Live",
   },
-  interview: {
-    label:    "Interview",
-    title:    "Interview",
+  qandaPage: {
+    label:    "Q&A",
+    title:    "Q&A",
     subtitle: "Questions I've been asked, and my honest answers.",
   },
   projectCard: {
@@ -150,7 +175,7 @@ export const en: Dictionary = {
       github: links.github + "/mistralai-code-reviewer",
     },
     {
-      id: "ban-hr-workflow",
+      id: "hr-workflow",
       title: "HR Document Workflow",
       description: "A Spring Boot system that digitized a manual HR document process for 100 employees.",
       problem:
@@ -160,6 +185,7 @@ export const en: Dictionary = {
       learned:
         "Workflow systems are mostly about state machines and permissions. Getting the PostgreSQL schema and role enforcement right upfront made every API endpoint simpler and prevented business-rule leaks.",
       stack: ["Java", "Spring Boot", "PostgreSQL", "Angular", "REST APIs", "RBAC"],
+      privateNote: "Code private — built for Business Action Network.",
     },
   ],
   qanda: [

@@ -8,6 +8,7 @@ export type Project = {
   stack:       string[]; // technologies used
   url?:        string;   // optional live demo
   github?:     string;   // optional source code
+  privateNote?: string; // shown when source is not public
 };
 
 export const projects: Project[] = [
@@ -38,7 +39,7 @@ export const projects: Project[] = [
     github: "https://github.com/moskia/mistralai-code-reviewer",
   },
   {
-    id:          "ban-hr-workflow",
+    id:          "hr-workflow",
     title:       "HR Document Workflow",
     description: "A Spring Boot system that digitized a manual HR document process for 100 employees.",
     problem:

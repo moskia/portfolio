@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amine Benkia — Portfolio",
+  metadataBase: new URL("https://moskia.github.io/portfolio"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

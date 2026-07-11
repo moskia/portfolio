@@ -33,9 +33,9 @@ export default function LinkButton({
     );
   }
 
-  if (external) {
+  if (external || href.startsWith("mailto:")) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+      <a href={href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} className={className}>
         {children}
       </a>
     );

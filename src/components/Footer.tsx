@@ -16,6 +16,12 @@ export default function Footer({ locale }: FooterProps) {
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-ink-muted">
         <span>© {year} <ScrambleText text={t.profile.name} onScroll={false} /></span>
         <div className="flex gap-6">
+          <a
+            href={`mailto:${t.profile.email}`}
+            className="transition-colors hover:text-accent"
+          >
+            <ScrambleText text={t.profile.email} />
+          </a>
           <a href={links.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent">
             <ScrambleText text="GitHub" />
           </a>

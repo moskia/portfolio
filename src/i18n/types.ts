@@ -2,21 +2,26 @@ import type { ExperienceEntry } from "@/components/ui/ExperienceCard";
 import type { Project } from "@/data/projects";
 
 export type Dictionary = {
-  meta: {
-    title: string;
-    description: string;
+  pageMeta: {
+    home: { title: string; description: string };
+    about: { title: string; description: string };
+    projects: { title: string; description: string };
+    resume: { title: string; description: string };
+    qanda: { title: string; description: string };
   };
   nav: {
     about: string;
     projects: string;
     resume: string;
-    interview: string;
+    qanda: string;
   };
   home: {
     tagline: string;
+    proofPoint: string;
     locationLine: string;
     viewProjects: string;
     downloadResume: string;
+    contactMe: string;
     inDepth: string;
     project: string;
     focusedOn: string;
@@ -49,7 +54,7 @@ export type Dictionary = {
     downloadFr: string;
     live: string;
   };
-  interview: {
+  qandaPage: {
     label: string;
     title: string;
     subtitle: string;

@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { getSkillCategories } from "@/i18n/skill-categories";
 import { links } from "@/i18n/dictionaries/en";
+import { buildPageMetadata } from "@/lib/site-metadata";
 import PageContainer from "@/components/layout/PageContainer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import SkillsGrid from "@/components/ui/SkillsGrid";
@@ -14,6 +16,18 @@ type PageProps = {
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const t = getDictionary(locale);
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "/about",
+    title: t.pageMeta.about.title,
+    description: t.pageMeta.about.description,
+  });
 }
 
 export default async function AboutPage({ params }: PageProps) {

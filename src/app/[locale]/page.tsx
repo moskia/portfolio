@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { buildPageMetadata } from "@/lib/site-metadata";
 import PageContainer from "@/components/layout/PageContainer";
 import LinkButton from "@/components/ui/LinkButton";
 import Tag from "@/components/ui/Tag";
@@ -13,6 +15,18 @@ type PageProps = {
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const t = getDictionary(locale);
+  return buildPageMetadata({
+    locale: locale as Locale,
+    path: "",
+    title: t.pageMeta.home.title,
+    description: t.pageMeta.home.description,
+  });
 }
 
 export default async function HomePage({ params }: PageProps) {
@@ -38,6 +52,10 @@ export default async function HomePage({ params }: PageProps) {
             <ScrambleText text={t.profile.headline} onHover={false} delay={300} />
           </p>
 
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-light md:text-lg">
+            <ScrambleText text={t.home.proofPoint} onHover={false} delay={375} />
+          </p>
+
           <p className="mt-4 text-sm text-ink-light">
             <ScrambleText text={t.home.locationLine} onHover={false} delay={450} />
           </p>
@@ -48,6 +66,9 @@ export default async function HomePage({ params }: PageProps) {
             </LinkButton>
             <LinkButton href={t.resumePdf} download variant="ghost">
               <ScrambleText text={t.home.downloadResume} />
+            </LinkButton>
+            <LinkButton href={`mailto:${t.profile.email}`} variant="ghost">
+              <ScrambleText text={t.home.contactMe} />
             </LinkButton>
           </div>
         </PageContainer>
@@ -63,7 +84,7 @@ export default async function HomePage({ params }: PageProps) {
             {featured.map((project) => (
               <Link
                 key={project.id}
-                href={`/${locale}/projects`}
+                href={`/${locale}/projects#${project.id}`}
                 className="group rounded-2xl border border-border bg-bg p-8 shadow-sm transition-shadow hover:shadow-md"
               >
                 <p className="mb-3 text-xs font-semibold tracking-[0.12em] text-ink-light uppercase">
