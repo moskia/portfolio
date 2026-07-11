@@ -9,19 +9,19 @@ type SectionHeaderProps = {
 
 export default function SectionHeader({ title, subtitle, label, action }: SectionHeaderProps) {
   return (
-    <div className="mb-10 flex items-start justify-between gap-6">
+    <div className="mb-12 flex items-start justify-between gap-6">
       <div>
         {label && (
-          <p className="font-mono font-medium mb-3 text-sm text-accent">
+          <p className="mb-4 text-xs font-semibold tracking-[0.15em] text-ink-light uppercase">
             <ScrambleText text={label} />
           </p>
         )}
-        <h1 className="text-4xl font-bold tracking-tight text-neutral-100">
+        <h1 className="text-4xl font-bold tracking-tight text-ink md:text-5xl">
           <ScrambleText text={title} />
         </h1>
         {subtitle && (
-          <p className="mt-3 text-neutral-500">
-            <ScrambleText text={subtitle} />
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
+            <ScrambleText text={subtitle} onHover={false} />
           </p>
         )}
       </div>

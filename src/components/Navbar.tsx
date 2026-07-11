@@ -1,38 +1,51 @@
+import { type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/get-dictionary";
 import Link from "next/link";
-import { profile } from "@/data/profile";
 import ScrambleText from "@/components/ui/ScrambleText";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
-const navLinks = [
-  { href: "/about",     label: "About" },
-  { href: "/projects",  label: "Projects" },
-  { href: "/resume",    label: "Resume" },
-  { href: "/interview", label: "Interview" },
-];
+type NavbarProps = {
+  locale: Locale;
+};
 
-export default function Navbar() {
+export default function Navbar({ locale }: NavbarProps) {
+  const t = getDictionary(locale);
+  const [first, ...rest] = t.profile.name.split(" ");
+
+  const navLinks = [
+    { href: `/${locale}/about`,     label: t.nav.about },
+    { href: `/${locale}/projects`,  label: t.nav.projects },
+    { href: `/${locale}/resume`,    label: t.nav.resume },
+    { href: `/${locale}/interview`, label: t.nav.interview },
+  ];
+
   return (
-    <header className="border-b border-border bg-neutral-950">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-
-        <Link href="/" className="flex items-baseline gap-0.5 font-semibold tracking-tight">
-          <span className="font-mono text-accent">~/</span>
-          <span className="text-neutral-100">
-            <ScrambleText text={profile.name} />
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur-sm">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-5">
+        <Link href={`/${locale}`} className="leading-none shrink-0">
+          <span className="block text-lg font-bold tracking-tight text-ink">
+            <ScrambleText text={first} onScroll={false} />
+          </span>
+          <span className="block text-lg font-light tracking-tight text-ink-muted">
+            <ScrambleText text={rest.join(" ")} onScroll={false} delay={120} />
           </span>
         </Link>
 
-        <ul className="flex gap-6">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm text-neutral-400 transition-colors hover:text-neutral-100"
-              >
-                <ScrambleText text={link.label} />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-6">
+          <ul className="hidden sm:flex gap-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-[15px] text-ink-muted transition-colors hover:text-ink"
+                >
+                  <ScrambleText text={link.label} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <LocaleSwitcher />
+        </div>
       </nav>
     </header>
   );

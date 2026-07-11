@@ -9,23 +9,21 @@ export type ExperienceEntry = {
 
 export default function ExperienceCard({ role, company, period, description }: ExperienceEntry) {
   return (
-    <div className="mb-6 last:mb-0">
+    <div className="mb-8 last:mb-0">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div>
-          <span className="font-semibold text-neutral-100">
+          <span className="font-semibold text-ink">
             <ScrambleText text={role} />
           </span>
-          <span className="ml-2 text-neutral-500">
+          <span className="ml-2 text-ink-muted">
             — <ScrambleText text={company} />
           </span>
         </div>
-        <span className="text-sm text-neutral-500">
+        <span className="text-sm text-ink-light">
           <ScrambleText text={period} />
         </span>
       </div>
-      <p className="mt-2 text-neutral-400">
-        <ScrambleText text={description} />
-      </p>
+      <p className="mt-3 leading-relaxed text-ink-muted">{description}</p>
     </div>
   );
 }

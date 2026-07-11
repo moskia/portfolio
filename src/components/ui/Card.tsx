@@ -1,5 +1,3 @@
-// Generic surface container — consistent dark background, border, and padding.
-// `className` is an escape hatch for one-off overrides (e.g. hover effects).
 type CardProps = {
   children: React.ReactNode;
   className?: string;
@@ -7,7 +5,7 @@ type CardProps = {
 
 export default function Card({ children, className = "" }: CardProps) {
   return (
-    <div className={`rounded-lg border border-border bg-surface p-6 ${className}`}>
+    <div className={`rounded-2xl border border-border bg-bg p-8 shadow-sm ${className}`}>
       {children}
     </div>
   );

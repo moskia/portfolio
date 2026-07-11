@@ -6,7 +6,7 @@ type TagProps = {
 
 export default function Tag({ label }: TagProps) {
   return (
-    <span className="font-mono rounded border border-border bg-neutral-950 px-2 py-0.5 text-xs text-neutral-400">
+    <span className="rounded-full border border-border bg-bg-subtle px-3 py-1 text-xs font-medium text-ink-muted">
       <ScrambleText text={label} />
     </span>
   );

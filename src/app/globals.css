@@ -1,37 +1,33 @@
 @import "tailwindcss";
 
-/* ─── Design tokens ──────────────────────────────────────────────────────────
-   Defining tokens here means every Tailwind utility is generated automatically.
-   `bg-surface`    → card / elevated surface background
-   `border-border` → all dividers and card outlines
-   `text-accent`   → single brand accent, used sparingly
-   ─────────────────────────────────────────────────────────────────────────── */
+/* Gates Notes–inspired tokens: white canvas, sans-serif, blue accent */
 @theme {
-  --color-surface: #111111;
-  --color-border:  #1f1f1f;
-  --color-accent:  #34d399; /* emerald-400 — terminal green */
+  --color-bg:          #ffffff;
+  --color-bg-subtle:   #f6f6f6;
+  --color-surface:     #111111;
+  --color-border:      #e8e8e8;
+  --color-ink:         #111111;
+  --color-ink-muted:   #5c5c5c;
+  --color-ink-light:   #8a8a8a;
+  --color-accent:      #0e6ed8;
+  --color-accent-hover:#0a5cb8;
 }
 
-/* Wire up the Geist fonts (injected as CSS vars by Next.js) to Tailwind's
-   font-sans and font-mono utilities. */
 @theme inline {
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-geist-mono), "Courier New", monospace;
 }
 
-/* ─── Base styles ────────────────────────────────────────────────────────── */
 body {
-  background-color: #0a0a0a;
-  color: #e5e5e5;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
 }
 
-/* Text selected by the user gets an accent-tinted highlight */
 ::selection {
-  background-color: #065f46; /* emerald-900 */
-  color: #d1fae5;            /* emerald-100 */
+  background-color: #cce4ff;
+  color: #111111;
 }
 
-/* Subtle scrollbar — visible only on systems that show it */
-::-webkit-scrollbar        { width: 5px; }
-::-webkit-scrollbar-track  { background: #0a0a0a; }
-::-webkit-scrollbar-thumb  { background: #2a2a2a; border-radius: 9999px; }
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  { background: #d4d4d4; border-radius: 9999px; }

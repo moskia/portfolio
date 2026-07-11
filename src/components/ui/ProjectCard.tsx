@@ -4,24 +4,37 @@ import Tag from "./Tag";
 import LinkButton from "./LinkButton";
 import ScrambleText from "./ScrambleText";
 
-export default function ProjectCard({ project }: { project: Project }) {
-  return (
-    <Card className="transition-colors hover:border-neutral-700">
+type ProjectCardLabels = {
+  problem: string;
+  built: string;
+  learned: string;
+  github: string;
+  liveDemo: string;
+};
 
-      <h2 className="mb-1 text-xl font-semibold text-neutral-100">
+type ProjectCardProps = {
+  project: Project;
+  labels: ProjectCardLabels;
+};
+
+export default function ProjectCard({ project, labels }: ProjectCardProps) {
+  return (
+    <Card className="transition-shadow hover:shadow-md">
+
+      <h2 className="mb-2 text-2xl font-bold text-ink">
         <ScrambleText text={project.title} />
       </h2>
-      <p className="mb-6 text-sm text-neutral-500">
-        <ScrambleText text={project.description} />
+      <p className="mb-8 text-ink-muted">
+        <ScrambleText text={project.description} onHover={false} />
       </p>
 
-      <div className="mb-6 space-y-5 border-t border-neutral-800 pt-5">
-        <CaseStudyRow label="Problem"        text={project.problem}  />
-        <CaseStudyRow label="What I built"   text={project.solution} />
-        <CaseStudyRow label="What I learned" text={project.learned}  />
+      <div className="mb-8 space-y-6 border-t border-border pt-8">
+        <CaseStudyRow label={labels.problem}  text={project.problem}  />
+        <CaseStudyRow label={labels.built}    text={project.solution} />
+        <CaseStudyRow label={labels.learned}  text={project.learned}  />
       </div>
 
-      <div className="mb-5 flex flex-wrap gap-2">
+      <div className="mb-6 flex flex-wrap gap-2">
         {project.stack.map((tech) => (
           <Tag key={tech} label={tech} />
         ))}
@@ -30,12 +43,12 @@ export default function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-wrap gap-3">
         {project.github && (
           <LinkButton href={project.github} external>
-            <ScrambleText text="GitHub" />
+            <ScrambleText text={labels.github} />
           </LinkButton>
         )}
         {project.url && (
           <LinkButton href={project.url} external>
-            <ScrambleText text="Live demo" />
+            <ScrambleText text={labels.liveDemo} />
           </LinkButton>
         )}
       </div>
@@ -47,12 +60,10 @@ export default function ProjectCard({ project }: { project: Project }) {
 function CaseStudyRow({ label, text }: { label: string; text: string }) {
   return (
     <div>
-      <p className="font-mono mb-1 text-xs text-neutral-500">
+      <p className="mb-2 text-xs font-semibold tracking-[0.12em] text-ink-light uppercase">
         <ScrambleText text={label} />
       </p>
-      <p className="text-sm leading-relaxed text-neutral-300">
-        <ScrambleText text={text} />
-      </p>
+      <p className="leading-relaxed text-ink-muted">{text}</p>
     </div>
   );
 }
