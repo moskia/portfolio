@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { withBasePath } from "@/lib/base-path";
 
 type LinkButtonVariant = "primary" | "ghost";
 
@@ -26,7 +27,7 @@ export default function LinkButton({
 
   if (download) {
     return (
-      <a href={href} download className={className}>
+      <a href={withBasePath(href)} download className={className}>
         {children}
       </a>
     );
